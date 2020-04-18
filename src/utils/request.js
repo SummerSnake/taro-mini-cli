@@ -20,7 +20,7 @@ export function getRequest(url, params) {
       method: 'GET',
       header,
     })
-      .then(res => {
+      .then((res) => {
         const { data = {} } = res;
 
         switch (data.status) {
@@ -41,7 +41,7 @@ export function getRequest(url, params) {
             resolve(data);
         }
       })
-      .catch(error => reject(error));
+      .catch((error) => reject(error));
   });
 }
 
@@ -66,7 +66,7 @@ export function postRequest(url, params) {
       },
     })
 
-      .then(res => {
+      .then((res) => {
         const { data = {} } = res;
 
         switch (data.status) {
@@ -87,7 +87,7 @@ export function postRequest(url, params) {
             resolve(data);
         }
       })
-      .catch(error => reject(error));
+      .catch((error) => reject(error));
   });
 }
 
@@ -118,7 +118,7 @@ export function postRequestFormData(url, params) {
         'content-type': 'application/x-www-form-urlencoded',
       },
     })
-      .then(res => {
+      .then((res) => {
         const { data = {} } = res;
 
         switch (data.status) {
@@ -139,7 +139,7 @@ export function postRequestFormData(url, params) {
             resolve(data);
         }
       })
-      .catch(error => reject(error));
+      .catch((error) => reject(error));
   });
 }
 
@@ -154,7 +154,7 @@ export function deleteRequest(url, params) {
     }
 
     const getParams = Object.keys(params)
-      .map(function(k) {
+      .map(function (k) {
         return encodeURIComponent(k) + '=' + encodeURIComponent(params[k]);
       })
       .join('&');
@@ -167,7 +167,7 @@ export function deleteRequest(url, params) {
       method: 'DELETE',
       header,
     })
-      .then(res => {
+      .then((res) => {
         const { data = {} } = res;
 
         switch (data.status) {
@@ -188,6 +188,6 @@ export function deleteRequest(url, params) {
             resolve(data);
         }
       })
-      .catch(error => reject(error));
+      .catch((error) => reject(error));
   });
 }

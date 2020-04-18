@@ -3,35 +3,35 @@
  * @param { any } 要验证的值
  * @return { boolean } true => 非空
  */
-export const isNotNull = val => val !== '' && typeof val !== 'undefined' && val !== null;
+export const isNotNull = (val) => val !== '' && typeof val !== 'undefined' && val !== null;
 
 /**
  * @desc 验证是否是对象类型
  * @param { any } obj 要验证的值
  * @return { boolean }  true => 对象类型
  */
-export const isObj = obj => Object.prototype.toString.call(obj) === '[object Object]';
+export const isObj = (obj) => Object.prototype.toString.call(obj) === '[object Object]';
 
 /**
  * @desc 验证是否是数组类型且数组长度大于0
  * @param { array } array 要验证的数组
  * @return { boolean }
  */
-export const verifyArr = array => Array.isArray(array) && array.length > 0;
+export const verifyArr = (array) => Array.isArray(array) && array.length > 0;
 
 /**
  * @desc 校验是否是正整数
  * @param { any } num
  * @return { boolean }
  */
-export const isPositiveInteger = num => /(^[1-9]\d*$)/.test(num);
+export const isPositiveInteger = (num) => /(^[1-9]\d*$)/.test(num);
 
 /**
  * @desc 校验最多两位小数
  * @param { any } num
  * @return { boolean }
  */
-export const atMostTwoDecimal = num =>
+export const atMostTwoDecimal = (num) =>
   /^(([1-9][0-9]*)|(([0]\.\d{1,2}|[1-9][0-9]*\.\d{1,2})))$/.test(num);
 
 /**
@@ -39,12 +39,12 @@ export const atMostTwoDecimal = num =>
  * @param { any } val 要验证的值
  * @return { boolean }
  */
-export const verifyPhone = val => /^1[3-9]\d{9}$/.test(val);
+export const verifyPhone = (val) => /^1[3-9]\d{9}$/.test(val);
 
 /**
  * @desc 延迟执行
  */
-export const delayFunc = timeout => new Promise(resolve => setTimeout(resolve, timeout));
+export const delayFunc = (timeout) => new Promise((resolve) => setTimeout(resolve, timeout));
 
 /**
  * @desc 函数防抖 (触发事件后在 n 秒内函数只能执行一次，如果在 n 秒内又触发了事件，则会重新计算函数执行时间)
@@ -55,7 +55,7 @@ export const delayFunc = timeout => new Promise(resolve => setTimeout(resolve, t
 export const debounce = (func, delay, immediate) => {
   let timeout = null;
 
-  return function() {
+  return function () {
     const context = this;
     const args = arguments;
 
@@ -69,7 +69,7 @@ export const debounce = (func, delay, immediate) => {
       }, delay);
       if (callNow) func.apply(context, args);
     } else {
-      timeout = setTimeout(function() {
+      timeout = setTimeout(function () {
         func.apply(context, args);
       }, delay);
     }
@@ -83,7 +83,7 @@ export const debounce = (func, delay, immediate) => {
  */
 export const throttle = (func, delay) => {
   let previous = 0;
-  return function() {
+  return function () {
     const now = Date.now();
     const context = this;
 
@@ -99,7 +99,7 @@ export const throttle = (func, delay) => {
  * @param { string } day
  * @return { string }
  */
-export const weekFormat = day => {
+export const weekFormat = (day) => {
   switch (day) {
     case '1':
       return '星期一';
@@ -123,7 +123,7 @@ export const weekFormat = day => {
  * @desc 将数字12345678转化成RMB形式：12,345,678
  * @param { number } num 要转换的数字
  */
-export const formatNumberToRMB = num => {
+export const formatNumberToRMB = (num) => {
   if (!num) {
     return 0;
   }

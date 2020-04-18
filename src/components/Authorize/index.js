@@ -48,11 +48,11 @@ function Authorize(props) {
   const applyAuthorize = () => {
     // 获取用户信息
     Taro.getUserInfo({
-      success: async res => Taro.setStorageSync('userInfo', res.userInfo),
-    }).then(userRes => {
+      success: async (res) => Taro.setStorageSync('userInfo', res.userInfo),
+    }).then((userRes) => {
       // 授权
       Taro.login({
-        success: async loginRes => {
+        success: async (loginRes) => {
           if (loginRes.code) {
             const authRes = await authorize(userRes, loginRes);
             if (authRes === 'success') {

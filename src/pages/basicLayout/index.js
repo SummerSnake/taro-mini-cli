@@ -23,7 +23,7 @@ function BasicLayout(props) {
    * @desc tabbar 点击事件
    * @param { number } index
    */
-  const handleTabbarClick = index => {
+  const handleTabbarClick = (index) => {
     dispatch &&
       dispatch({
         type: 'common/save',
