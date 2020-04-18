@@ -1,0 +1,5 @@
+@import '@/src/styles/mixin';
+
+.homeWrap {
+  @include wh(100vw, 100%);
+}

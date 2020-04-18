@@ -1,0 +1,5 @@
+@import '../../styles/mixin';
+
+.userWrap {
+  @include wh(100vw, 100%);
+}

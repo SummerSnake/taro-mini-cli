@@ -1,0 +1,35 @@
+@import '@/src/styles/mixin';
+
+.basicLayoutWrap {
+  @include wh(100vw, 100%);
+  position: relative;
+  .contentWrap {
+    @include wh(100%, calc(100% - 100px));
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .tabbarWrap {
+    @include wh(100%, 100px);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    box-sizing: border-box;
+    padding-top: 8px;
+    border-top: 2px solid #e5e5e5;
+    overflow: hidden;
+    .tabbarItem {
+      flex: 1;
+      text-align: center;
+      .tabbarIcon {
+        width: 48px;
+        height: 48px;
+      }
+      .tabbarTitle {
+        margin-top: -8px;
+        font-size: 24px;
+      }
+    }
+  }
+}

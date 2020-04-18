@@ -1,0 +1,74 @@
+/* 颜色、字体变量 */
+$primaryColor: #2083e4;
+$titleColor: #333;
+$titleSize: 32px;
+$txtColor: #999;
+$txtSize: 28px;
+
+page,
+body {
+  width: 100vw;
+  height: 100%;
+}
+
+// 背景图片地址和大小
+@mixin bg($url) {
+  background: url($url) no-repeat;
+  background-size: 100% 100%;
+}
+
+// 定位上下左右居中
+@mixin center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// 宽高
+@mixin wh($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+// 宽最小高
+@mixin wmh($width, $height) {
+  width: $width;
+  min-height: $height;
+}
+
+// 高、行高
+@mixin hl($height, $lineheight) {
+  height: $height;
+  line-height: $lineheight;
+}
+
+// 字体大小，颜色
+@mixin sc($size, $color) {
+  font-size: $size;
+  color: $color;
+}
+
+// 清除浮动
+@mixin clearfix {
+  display: block;
+  content: ' ';
+  height: 0;
+  width: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+// 背景图片地址和大小
+@mixin bg($url) {
+  background: url($url) no-repeat;
+  background-size: cover;
+}
+
+// ellipsis
+@mixin ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
