@@ -6,6 +6,12 @@ import styles from './index.modules.scss';
 
 function Home(props) {
   const { dispatch } = props;
+  // 导航栏参数
+  const navBarJson = {
+    backgroundColor: '#000',
+    color: '#fff',
+    title: '首页',
+  };
 
   useEffect(() => {
     dispatch &&
@@ -16,7 +22,7 @@ function Home(props) {
 
   return (
     <View className={styles.homeWrap}>
-      <NavBar backgroundColor="#000" color="#fff" title="首页" />
+      <NavBar navBarJson={navBarJson} />
     </View>
   );
 }

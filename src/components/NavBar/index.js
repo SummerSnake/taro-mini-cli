@@ -1,4 +1,4 @@
-import Taro, { useState, useDidShow } from '@tarojs/taro';
+import Taro, { useState, useEffect } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import styles from './index.modules.scss';
 
@@ -57,7 +57,7 @@ const getSystemInfo = () => {
     if (!systemInfo.statusBarHeight) {
       // 开启wifi和打电话下
       systemInfo.statusBarHeight = systemInfo.screenHeight - systemInfo.windowHeight - 20;
-      navBarHeight = (function () {
+      navBarHeight = (() => {
         let gap = rect.top - systemInfo.statusBarHeight;
         return 2 * gap + rect.height;
       })();
@@ -65,15 +65,12 @@ const getSystemInfo = () => {
       systemInfo.statusBarHeight = 0;
       systemInfo.navBarExtendHeight = 0;
     } else {
-      navBarHeight = (function () {
+      navBarHeight = (() => {
         let gap = rect.top - systemInfo.statusBarHeight;
         return systemInfo.statusBarHeight + 2 * gap + rect.height;
       })();
-      if (ios) {
-        systemInfo.navBarExtendHeight = 4; // 下方扩展4像素高度 防止下方边距太小
-      } else {
-        systemInfo.navBarExtendHeight = 0;
-      }
+      // ios下方扩展4像素高度 防止下方边距太小
+      systemInfo.navBarExtendHeight = !!ios ? 4 : 0;
     }
 
     systemInfo.navBarHeight = navBarHeight; // 导航栏高度不包括statusBarHeight
@@ -88,7 +85,7 @@ const getSystemInfo = () => {
 };
 
 const NavBar = (props) => {
-  const { title, color, backgroundColor } = props;
+  const { navBarJson = {} } = props;
 
   const setStyle = (systemInfo) => {
     const {
@@ -104,8 +101,8 @@ const NavBar = (props) => {
     let leftWidth = windowWidth - capsulePosition.left; // 胶囊按钮左侧到屏幕右侧的边距
 
     let navigationbarinnerStyle = {
-      color,
-      backgroundColor,
+      color: navBarJson['color'],
+      backgroundColor: navBarJson['backgroundColor'],
       height: `${navBarHeight + navBarExtendHeight}px`,
       paddingTop: `${statusBarHeight}px`,
       paddingRight: `${leftWidth}px`,
@@ -126,12 +123,17 @@ const NavBar = (props) => {
 
   const { navigationbarinnerStyle = {}, ios, navBarHeight, navBarExtendHeight } = configStyle;
   // 挂载获取系统信息
-  useDidShow(() => setConfigStyle(setStyle(getSystemInfo())));
+  useEffect(() => {
+    setConfigStyle(setStyle(getSystemInfo()));
+  }, []);
 
   return (
     <View
       className={styles.navBar}
-      style={{ backgroundColor, height: `${navBarHeight + navBarExtendHeight}px` }}
+      style={{
+        backgroundColor: navBarJson['backgroundColor'],
+        height: `${navBarHeight + navBarExtendHeight}px`,
+      }}
     >
       <View
         className={`${styles.navBarInner} ${ios ? styles.ios : styles.android}`}
@@ -140,18 +142,20 @@ const NavBar = (props) => {
 
       <View
         className={styles.navBarTitle}
-        style={{ color, paddingTop: navigationbarinnerStyle.paddingTop }}
+        style={{ color: navBarJson['color'], paddingTop: navigationbarinnerStyle.paddingTop }}
       >
-        {title}
+        {navBarJson && navBarJson['title']}
       </View>
     </View>
   );
 };
 
 NavBar.defaultProps = {
-  backgroundColor: 'rgba(255, 255, 255, 1)', //导航栏背景
-  color: '#000000',
-  title: '',
+  navBarJson: {
+    backgroundColor: '#000', //导航栏背景
+    color: '#fff',
+    title: '导航',
+  },
 };
 
 export default NavBar;
