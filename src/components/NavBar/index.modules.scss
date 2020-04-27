@@ -1,0 +1,66 @@
+page {
+  /* prettier-ignore */
+  --height: 44PX; /* 4*2+32 */
+  /* prettier-ignore */
+  --right: 97PX; /* 10+87 */
+  /* prettier-ignore */
+  --navBarExtendHeight: 4PX;
+  /* prettier-ignore */
+  --navBarHeight: 68PX;
+  box-sizing: border-box;
+}
+.navBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 997;
+  width: 100%;
+  .ios {
+    /* prettier-ignore */
+    --height: 44PX; /* 4*2+32 */
+    /* prettier-ignore */
+    --right: 97PX; /* 10+87 */
+    /* prettier-ignore */
+    --navBarExtendHeight: 4PX;
+    box-sizing: border-box;
+  }
+  .android {
+    /* prettier-ignore */
+    --height: 48PX; /* 8*2+32 */
+    /* prettier-ignore */
+    --right: 96PX; /* 10+87 */
+    /* prettier-ignore */
+    --navBarExtendHeight: 4PX;
+    box-sizing: border-box;
+  }
+  .devtools {
+    /* prettier-ignore */
+    --height: 42PX; /* 5*2+32 */
+    /* prettier-ignore */
+    --right: 88PX; /* 10+87 */
+    /* prettier-ignore */
+    --navBarExtendHeight: 4PX;
+    box-sizing: border-box;
+  }
+  .navBarInner {
+    height: var(--navBarHeight);
+    padding-right: var(--right);
+    /* prettier-ignore */
+    padding-top: 20PX;
+    /* prettier-ignore */
+    padding-bottom:4PX;
+  }
+
+  .navBarTitle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* prettier-ignore */
+    padding-top: 18PX;
+    z-index: 998;
+    /* prettier-ignore */
+    font-size: 17PX;
+    text-align: center;
+  }
+}

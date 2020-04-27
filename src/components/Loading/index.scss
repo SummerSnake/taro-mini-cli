@@ -5,8 +5,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 999999;
-  background-color: rgba(255, 255, 255, 0.6);
+  z-index: 999;
+  background-color: rgba(255, 255, 255, 0.4);
   .sk-circle {
     @include wh(80px, 80px);
     position: absolute;
