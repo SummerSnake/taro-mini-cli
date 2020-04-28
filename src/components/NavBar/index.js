@@ -3,9 +3,6 @@ import { View } from '@tarojs/components';
 import getSystemInfo from '@/utils/getSystemInfo';
 import styles from './index.modules.scss';
 
-/**
- * @desc 导航栏
- */
 function NavBar(props) {
   const { navBarJson = {} } = props; // 导航栏传参
 
@@ -81,8 +78,8 @@ function NavBar(props) {
 
 NavBar.defaultProps = {
   navBarJson: {
-    background: '#000', //导航栏背景
-    color: '#fff',
+    background: '#000', // 导航栏背景，可设为颜色或图片
+    color: '#fff', // title 颜色
     title: '',
   },
 };

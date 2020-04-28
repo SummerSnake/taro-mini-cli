@@ -7,7 +7,7 @@ import styles from './index.modules.scss';
 
 function Home(props) {
   const { dispatch } = props;
-  const [top, setTop] = useState('68px'); // 内容 marginTop === 导航栏高度
+  const [top, setTop] = useState(68); // 内容 marginTop === 导航栏高度
   // 导航栏参数
   const navBarJson = {
     background:
