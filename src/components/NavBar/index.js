@@ -2,15 +2,18 @@ import Taro, { useState, useEffect } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import styles from './index.modules.scss';
 
+/**
+ * @desc 获取系统信息
+ */
 const getSystemInfo = () => {
   // 校验是否存在系统信息，并校验是否ios
   if (Taro.globalSystemInfo && !Taro.globalSystemInfo.ios) {
     return Taro.globalSystemInfo;
   } else {
     // 获取系统信息
-    let systemInfo = Taro.getSystemInfoSync();
+    const systemInfo = Taro.getSystemInfoSync();
     // 是否ios
-    let ios = !!(systemInfo.system.toLowerCase().indexOf('ios') + 1);
+    const ios = !!(systemInfo.system.toLowerCase().indexOf('ios') + 1);
     // 胶囊按钮
     let rect = null;
     try {
@@ -58,7 +61,7 @@ const getSystemInfo = () => {
       // 开启wifi和打电话下
       systemInfo.statusBarHeight = systemInfo.screenHeight - systemInfo.windowHeight - 20;
       navBarHeight = (() => {
-        let gap = rect.top - systemInfo.statusBarHeight;
+        const gap = rect.top - systemInfo.statusBarHeight;
         return 2 * gap + rect.height;
       })();
 
@@ -66,7 +69,7 @@ const getSystemInfo = () => {
       systemInfo.navBarExtendHeight = 0;
     } else {
       navBarHeight = (() => {
-        let gap = rect.top - systemInfo.statusBarHeight;
+        const gap = rect.top - systemInfo.statusBarHeight;
         return systemInfo.statusBarHeight + 2 * gap + rect.height;
       })();
       // ios下方扩展4像素高度 防止下方边距太小
@@ -84,23 +87,26 @@ const getSystemInfo = () => {
   }
 };
 
-const NavBar = (props) => {
-  const { navBarJson = {} } = props;
+/**
+ * @desc 导航栏
+ */
+function NavBar(props) {
+  const { navBarJson = {} } = props; // 导航栏传参
 
   const setStyle = (systemInfo) => {
     const {
       statusBarHeight,
       navBarHeight,
-      capsulePosition,
       navBarExtendHeight,
-      ios,
+      capsulePosition,
       windowWidth,
+      ios,
     } = systemInfo;
 
-    let rightDistance = windowWidth - capsulePosition.right; // 胶囊按钮右侧到屏幕右侧的边距
-    let leftWidth = windowWidth - capsulePosition.left; // 胶囊按钮左侧到屏幕右侧的边距
+    const rightDistance = windowWidth - capsulePosition.right; // 胶囊按钮右侧到屏幕右侧的边距
+    const leftWidth = windowWidth - capsulePosition.left; // 胶囊按钮左侧到屏幕右侧的边距
 
-    let navigationbarinnerStyle = {
+    const navigationbarinnerStyle = {
       color: navBarJson['color'],
       backgroundColor: navBarJson['backgroundColor'],
       height: `${navBarHeight + navBarExtendHeight}px`,
@@ -112,10 +118,10 @@ const NavBar = (props) => {
     return {
       navigationbarinnerStyle,
       navBarHeight,
-      capsulePosition,
       navBarExtendHeight,
-      ios,
+      capsulePosition,
       rightDistance,
+      ios,
     };
   };
 
@@ -140,21 +146,24 @@ const NavBar = (props) => {
         style={{ ...navigationbarinnerStyle }}
       />
 
-      <View
-        className={styles.navBarTitle}
-        style={{ color: navBarJson['color'], paddingTop: navigationbarinnerStyle.paddingTop }}
-      >
-        {navBarJson && navBarJson['title']}
-      </View>
+      {/* 仅显示标题 */}
+      {navBarJson && navBarJson['title'] && (
+        <View
+          className={styles.navBarTitle}
+          style={{ color: navBarJson['color'], paddingTop: navigationbarinnerStyle['paddingTop'] }}
+        >
+          {navBarJson['title']}
+        </View>
+      )}
     </View>
   );
-};
+}
 
 NavBar.defaultProps = {
   navBarJson: {
     backgroundColor: '#000', //导航栏背景
     color: '#fff',
-    title: '导航',
+    title: '',
   },
 };
 
