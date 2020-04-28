@@ -116,6 +116,7 @@ function NavBar(props) {
     };
 
     return {
+      navBarWrapHeight: `${navBarHeight + navBarExtendHeight}px`,
       navigationbarinnerStyle,
       navBarHeight,
       navBarExtendHeight,
@@ -127,7 +128,7 @@ function NavBar(props) {
 
   const [configStyle, setConfigStyle] = useState({});
 
-  const { navigationbarinnerStyle = {}, ios, navBarHeight, navBarExtendHeight } = configStyle;
+  const { navigationbarinnerStyle = {}, navBarWrapHeight = 0, ios } = configStyle;
   // 挂载获取系统信息
   useEffect(() => {
     setConfigStyle(setStyle(getSystemInfo()));
@@ -135,14 +136,16 @@ function NavBar(props) {
 
   return (
     <View
-      className={styles.navBar}
+      className={styles.navBarWrap}
       style={{
-        backgroundColor: navBarJson['backgroundColor'],
-        height: `${navBarHeight + navBarExtendHeight}px`,
+        background: navBarJson['background'],
+        height: navBarWrapHeight,
+        backgroundSize: '100% 100%',
+        backgroundRepeat: 'no-repeat',
       }}
     >
       <View
-        className={`${styles.navBarInner} ${ios ? styles.ios : styles.android}`}
+        className={`${styles.navBarInner} ${!!ios ? styles.ios : styles.android}`}
         style={{ ...navigationbarinnerStyle }}
       />
 
@@ -161,7 +164,7 @@ function NavBar(props) {
 
 NavBar.defaultProps = {
   navBarJson: {
-    backgroundColor: '#000', //导航栏背景
+    background: '#000', //导航栏背景
     color: '#fff',
     title: '',
   },

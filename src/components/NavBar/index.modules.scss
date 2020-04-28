@@ -9,7 +9,7 @@ page {
   --navBarHeight: 68PX;
   box-sizing: border-box;
 }
-.navBar {
+.navBarWrap {
   position: fixed;
   top: 0;
   left: 0;
@@ -57,7 +57,9 @@ page {
     left: 50%;
     transform: translate(-50%, -50%);
     /* prettier-ignore */
-    padding-top: 18PX;
+    margin-top: -2PX;
+    /* prettier-ignore */
+    padding-top: 20PX;
     z-index: 998;
     /* prettier-ignore */
     font-size: 17PX;
