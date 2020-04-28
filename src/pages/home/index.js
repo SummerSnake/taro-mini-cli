@@ -1,4 +1,4 @@
-import Taro, { useEffect } from '@tarojs/taro';
+import Taro, { useState, useEffect } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import { connect } from '@tarojs/redux';
 import NavBar from '@/components/NavBar';
@@ -6,6 +6,7 @@ import styles from './index.modules.scss';
 
 function Home(props) {
   const { dispatch } = props;
+  const [marginTop, setMarginTop] = useState('68px'); // 内容 marginTop === 导航栏高度
   // 导航栏参数
   const navBarJson = {
     background:
@@ -21,9 +22,19 @@ function Home(props) {
       });
   }, []);
 
+  /**
+   * @desc 获取导航栏高度，设置内容 marginTop
+   */
+  useEffect(() => {
+    const { globalSystemInfo = {} } = Taro;
+    globalSystemInfo['navBarWrapHeight'] && setMarginTop(globalSystemInfo['navBarWrapHeight']);
+  }, [Taro['globalSystemInfo']]);
+
   return (
     <View className={styles.homeWrap}>
       <NavBar navBarJson={navBarJson} />
+
+      <View style={{ marginTop }}>内容</View>
     </View>
   );
 }

@@ -81,6 +81,7 @@ const getSystemInfo = () => {
     // 目前发现在大多机型都是固定值 为防止不一样所以会使用动态值来计算nav元素大小
     systemInfo.capsulePosition = rect;
     systemInfo.ios = ios; // 是否ios
+    systemInfo.navBarWrapHeight = `${navBarHeight + systemInfo.navBarExtendHeight}px`; // 是否ios
     Taro.globalSystemInfo = systemInfo; // 将信息保存到全局变量中
 
     return systemInfo;
@@ -95,6 +96,7 @@ function NavBar(props) {
 
   const setStyle = (systemInfo) => {
     const {
+      navBarWrapHeight,
       statusBarHeight,
       navBarHeight,
       navBarExtendHeight,
@@ -116,7 +118,7 @@ function NavBar(props) {
     };
 
     return {
-      navBarWrapHeight: `${navBarHeight + navBarExtendHeight}px`,
+      navBarWrapHeight,
       navigationbarinnerStyle,
       navBarHeight,
       navBarExtendHeight,
