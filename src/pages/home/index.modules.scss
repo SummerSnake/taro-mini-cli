@@ -2,4 +2,9 @@
 
 .homeWrap {
   @include wh(100vw, 100%);
+  position: relative;
+  .conWrap {
+    position: absolute;
+    left: 0;
+  }
 }

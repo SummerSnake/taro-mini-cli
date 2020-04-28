@@ -8,6 +8,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    overflow: auto;
   }
   .tabbarWrap {
     @include wh(100%, 100px);
