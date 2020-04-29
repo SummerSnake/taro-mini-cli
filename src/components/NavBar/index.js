@@ -4,7 +4,7 @@ import getSystemInfo from '@/utils/getSystemInfo';
 import styles from './index.modules.scss';
 
 function NavBar(props) {
-  const { navBarJson = {} } = props; // 导航栏传参
+  let { navBarJson = {} } = props; // 导航栏传参
 
   const setStyle = (systemInfo) => {
     const {
@@ -43,10 +43,16 @@ function NavBar(props) {
   const [configStyle, setConfigStyle] = useState({});
 
   const { navigationbarinnerStyle = {}, navBarWrapHeight = 0, ios } = configStyle;
+
   // 挂载获取系统信息
   useEffect(() => {
     setConfigStyle(setStyle(getSystemInfo()));
   }, []);
+
+  // 更新 navBar 信息
+  useEffect(() => {
+    navBarJson = { ...navBarJson };
+  }, [navBarJson]);
 
   return (
     <View

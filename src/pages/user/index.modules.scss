@@ -2,6 +2,9 @@
 
 .userWrap {
   @include wh(100vw, 100%);
+  .scrollDom {
+    @include wh(100vw, 100%);
+  }
   .imgDom {
     width: 100%;
   }
