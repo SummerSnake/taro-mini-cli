@@ -19,6 +19,11 @@ const config = {
     '@/components': path.resolve(__dirname, '..', 'src/components'),
     '@/utils': path.resolve(__dirname, '..', 'src/utils'),
   },
+  copy: {
+    patterns: [
+      { from: 'src/pages/user/move.wxs', to: 'dist/pages/user/move.wxs' }, // 指定需要 copy 的文件
+    ],
+  },
   babel: {
     sourceMap: true,
     presets: [

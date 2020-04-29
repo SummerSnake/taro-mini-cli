@@ -1,0 +1,32 @@
+@import '../../styles/mixin';
+
+.userWrap {
+  @include wh(100vw, 100%);
+  .navBarWrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 997;
+    width: 100%;
+    .navBarTitle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      /* prettier-ignore */
+      margin-top: -2PX;
+      /* prettier-ignore */
+      padding-top: 20PX;
+      z-index: 998;
+      /* prettier-ignore */
+      font-size: 17PX;
+      text-align: center;
+    }
+  }
+  .scrollDom {
+    @include wh(100vw, 100%);
+  }
+  .imgDom {
+    width: 100%;
+  }
+}
