@@ -1,5 +1,5 @@
 import Taro, { useState, useEffect } from '@tarojs/taro';
-import { View, Image, ScrollView } from '@tarojs/components';
+import { View, Image, Button, ScrollView } from '@tarojs/components';
 import getSystemInfo from '@/utils/getSystemInfo';
 import { isObj } from '@/utils/util';
 import './index.scss';
@@ -43,7 +43,9 @@ function User() {
 
         <View className="conWrap" onTouchMove="{{move.handleTouchMove}}">
           <Image src="http://att.3dmgame.com/att/forum/201302/21/105933sa5m6pea2o6msq3z.gif" />
-          <View>内容</View>
+          <Button type="primary" onClick={() => Taro.navigateTo({ url: '/pages/subPage/index' })}>
+            点我
+          </Button>
           <Image src="http://att.3dmgame.com/att/forum/201302/21/105933sa5m6pea2o6msq3z.gif" />
           <View>内容</View>
           <Image src="http://att.3dmgame.com/att/forum/201302/21/105933sa5m6pea2o6msq3z.gif" />

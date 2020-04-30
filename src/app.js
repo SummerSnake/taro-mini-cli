@@ -6,11 +6,8 @@ import './styles/iconfont.scss';
 
 class App extends Component {
   config = {
-    pages: ['pages/basicLayout/index'],
+    pages: ['pages/basicLayout/index', 'pages/subPage/index'],
     window: {
-      // navigationBarTitleText: 'taro 小程序',
-      // navigationBarTextStyle: 'white',
-      // navigationBarBackgroundColor: '#656b79',
       navigationStyle: 'custom',
     },
     permission: {
