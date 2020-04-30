@@ -54,6 +54,10 @@ const config = {
     imageUrlLoaderOption: {
       limit: 10240, // 默认值，可以按需调小
     },
+    // 可视化打包分析
+    // webpackChain(chain) {
+    //   chain.plugin('analyzer').use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin, []);
+    // },
     postcss: {
       pxtransform: {
         enable: true,

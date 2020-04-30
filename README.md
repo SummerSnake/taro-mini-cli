@@ -2,6 +2,8 @@
 
 taro 小程序脚手架
 
+内置自定义导航、自定义 tabbar
+
 # 技术栈
 
 Taro + dva + scss
@@ -64,7 +66,7 @@ yarn dev:weapp
 引入方式： scss 文件中 import
 
 ```
-   @import '../../styles/mixin';
+   @import '@/src/styles/mixin';
 ```
 
 ##### 6. 可以使用命令自动生成页面模板，用处不大，仅做娱乐使用:
