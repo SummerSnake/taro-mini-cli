@@ -10,9 +10,9 @@ function Subpage(props) {
   const [top, setTop] = useState(68); // 内容 marginTop === 导航栏高度
   // 导航栏参数
   const navBarJson = {
-    background: '#ff00ff',
+    background: 'linear-gradient(33deg, #d279ee, #f8c390)',
     color: '#fff',
-    title: '首页',
+    title: '标题',
   };
 
   /**
