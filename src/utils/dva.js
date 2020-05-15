@@ -10,6 +10,12 @@ function createApp(opt) {
   app = create(opt);
   app.use(createLoading({}));
 
+  app.use({
+    onError(error) {
+      console.log(error);
+    },
+  });
+
   opt.models.forEach((model) => app.model(model));
   app.start();
 
@@ -19,6 +25,7 @@ function createApp(opt) {
   dispatch = store.dispatch;
 
   app.dispatch = dispatch;
+
   return app;
 }
 

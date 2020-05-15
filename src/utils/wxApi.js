@@ -79,14 +79,15 @@ export const wxSaveImageToAlbum = (filePath) => {
 
 /**
  * @desc 下载、预览文件
- * @param { string } url
+ * @param { string } url 文件url
+ * @param { string } title 文件标题
  */
-export const wxDownloadFile = (url) => {
+export const wxDownloadFile = (url = '', title = '') => {
   Taro.downloadFile({
     url,
     success(res) {
       const filePath = res.tempFilePath;
-      const arr = res.tempFilePath.split('.');
+      const arr = filePath.split('.');
       const mime = arr[arr.length - 1];
 
       if (mime === 'jpg' || mime === 'jpeg' || mime === 'png' || mime === 'gif') {
@@ -98,6 +99,9 @@ export const wxDownloadFile = (url) => {
               wxSaveImageToAlbum(filePath);
             }
           },
+          fail() {
+            wxToast('文件打开失败');
+          },
         });
       } else {
         Taro.getSystemInfo({
@@ -105,12 +109,23 @@ export const wxDownloadFile = (url) => {
             if (sysRes.platform === 'ios') {
               Taro.navigateTo({ url: `/web-view/index?url=${url}` });
             } else {
-              Taro.openDocument({
-                filePath,
-                fileType: mime,
-                success() {},
+              const fs = Taro.getFileSystemManager();
+              // 修改文件名字，仅安卓可以，ios无权限
+              fs.rename({
+                oldPath: filePath,
+                newPath: `${Taro.env.USER_DATA_PATH}/${title}`,
+                success() {
+                  Taro.openDocument({
+                    filePath: `${Taro.env.USER_DATA_PATH}/${title}`,
+                    fileType: mime,
+                    success() {},
+                    fail() {
+                      wxToast('文件打开失败');
+                    },
+                  });
+                },
                 fail() {
-                  wxToast('文件打开失败');
+                  wxToast('文件保存失败');
                 },
               });
             }
