@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "cross-env ENV=dev NODE_ENV=production taro build --type weapp --watch",
     "start": "cross-env ENV=dev NODE_ENV=production taro build --type weapp --watch",
-    "test": "cross-env ENV=test NODE_ENV=production taro build --type weapp",
-    "build": "cross-env ENV=prod NODE_ENV=production taro build --type weapp",
+    "test": "cross-env ENV=test taro build --type weapp",
+    "build": "cross-env ENV=prod taro build --type weapp",
     "template": "node scripts/template",
     "prettier": "node scripts/prettier.js"
   },
