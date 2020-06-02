@@ -5,11 +5,14 @@ import { wxToast } from './wxApi.js';
  * @desc 不同环境接口配置
  */
 let apiUrl = '';
-switch (process.env.NODE_ENV) {
-  case 'development':
+switch (process.env.ENV) {
+  case 'dev':
     apiUrl = 'https://www.easy-mock.com/mock/5c47cf65f513860f4ceef6a3/shop';
     break;
-  case 'production':
+  case 'test':
+    apiUrl = 'https://www.easy-mock.com/mock/5c47cf65f513860f4ceef6a3/shop';
+    break;
+  case 'prod':
     apiUrl = 'https://www.easy-mock.com/mock/5c47cf65f513860f4ceef6a3/shop';
     break;
   default:

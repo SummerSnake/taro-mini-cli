@@ -25,8 +25,8 @@ yarn global add @tarojs/cli
 # 安装项目依赖
 yarn -i
 
-# 微信小程序
-yarn dev:weapp
+# 启动项目
+yarn dev || yarn start
 
 ```
 
