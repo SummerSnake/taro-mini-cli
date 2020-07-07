@@ -1,0 +1,9 @@
+@import '@/src/styles/mixin';
+
+.verifyCodeBtn {
+  @include wh(196px, 80px);
+  @include sc($txtSize, #fff);
+  text-align: center;
+  line-height: 80px;
+  border-radius: 8px;
+}
