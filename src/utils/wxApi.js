@@ -107,7 +107,7 @@ export const wxDownloadFile = (url = '', title = '') => {
         Taro.getSystemInfo({
           success(sysRes) {
             if (sysRes.platform === 'ios') {
-              Taro.navigateTo({ url: `/web-view/index?url=${url}` });
+              Taro.navigateTo({ url: `/webview/index?url=${url}` });
             } else {
               const fs = Taro.getFileSystemManager();
               // 修改文件名字，仅安卓可以，ios无权限

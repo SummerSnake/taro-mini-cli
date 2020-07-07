@@ -31,8 +31,7 @@ export const isPositiveInteger = (num) => /(^[1-9]\d*$)/.test(num);
  * @param { any } num
  * @return { boolean }
  */
-export const atMostTwoDecimal = (num) =>
-  /^(([1-9][0-9]*)|(([0]\.\d{1,2}|[1-9][0-9]*\.\d{1,2})))$/.test(num);
+export const atMostTwoDecimal = (num) => /^-?\d+\.?\d{0,2}$/.test(num);
 
 /**
  * @desc 校验手机号

@@ -4,9 +4,11 @@
   "private": true,
   "description": "taro 小程序脚手架",
   "scripts": {
-    "dev": "cross-env ENV=dev NODE_ENV=production taro build --type weapp --watch",
-    "start": "cross-env ENV=dev NODE_ENV=production taro build --type weapp --watch",
+    "dev": "cross-env ENV=dev taro build --type weapp --watch",
+    "start": "cross-env ENV=dev taro build --type weapp --watch",
+    "compress": "cross-env ENV=dev NODE_ENV=production taro build --type weapp --watch",
     "test": "cross-env ENV=test taro build --type weapp",
+    "uat": "cross-env ENV=uat taro build --type weapp",
     "build": "cross-env ENV=prod taro build --type weapp",
     "template": "node scripts/template",
     "prettier": "node scripts/prettier.js"

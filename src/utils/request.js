@@ -1,22 +1,23 @@
 import Taro from '@tarojs/taro';
-import { wxToast } from './wxApi.js';
+import { devUrl, testUrl, uatUrl, proUrl } from '@/src/config';
+import { wxToast } from '@/utils/wxApi.js';
 
 /**
  * @desc 不同环境接口配置
  */
-let apiUrl = '';
+let baseUrl = '';
 switch (process.env.ENV) {
   case 'dev':
-    apiUrl = 'https://www.easy-mock.com/mock/5c47cf65f513860f4ceef6a3/shop';
+    baseUrl = devUrl;
     break;
   case 'test':
-    apiUrl = 'https://www.easy-mock.com/mock/5c47cf65f513860f4ceef6a3/shop';
+    baseUrl = testUrl;
     break;
   case 'prod':
-    apiUrl = 'https://www.easy-mock.com/mock/5c47cf65f513860f4ceef6a3/shop';
+    baseUrl = uatUrl;
     break;
   default:
-    apiUrl = 'https://www.easy-mock.com/mock/5c47cf65f513860f4ceef6a3/shop';
+    baseUrl = proUrl;
 }
 
 /**
@@ -29,7 +30,7 @@ export function getRequest(url, params) {
       header = { Authorization: Taro.getStorageSync('accessToken') };
     }
     Taro.request({
-      url: `${apiUrl}${url}`,
+      url: `${baseUrl}${url}`,
       data: {
         ...params,
       },
@@ -71,7 +72,7 @@ export function postRequest(url, params) {
       header = { Authorization: Taro.getStorageSync('accessToken') };
     }
     Taro.request({
-      url: `${apiUrl}${url}`,
+      url: `${baseUrl}${url}`,
       data: {
         ...params,
       },
@@ -126,7 +127,7 @@ export function postRequestFormData(url, params) {
       paramStr = paramStr.substr(0, paramStr.length - 1);
     }
     Taro.request({
-      url: `${apiUrl}${url}`,
+      url: `${baseUrl}${url}`,
       data: paramStr,
       method: 'POST',
       header: {
@@ -176,7 +177,7 @@ export function deleteRequest(url, params) {
       .join('&');
 
     Taro.request({
-      url: `${apiUrl}${url}?${getParams}`,
+      url: `${baseUrl}${url}?${getParams}`,
       data: {
         ...params,
       },
