@@ -1,8 +1,8 @@
-const devUrl = 'https://devh5.com';
-const testUrl = 'https://testh5.com';
-const uatUrl = 'https://uath5.com';
-const proUrl = 'https://mmh5.com';
+const devUrl = 'https://dev.com';
+const testUrl = 'https://test.com';
+const uatUrl = 'https://uat.com';
+const proUrl = 'https://pro.com';
 
-const ossUrl = 'https://prooss.com';
+const ossUrl = 'https://oss.com';
 
 export { devUrl, testUrl, uatUrl, proUrl, ossUrl };

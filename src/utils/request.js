@@ -1,24 +1,9 @@
 import Taro from '@tarojs/taro';
-import { devUrl, testUrl, uatUrl, proUrl } from '@/src/config';
+import { devUrl } from '@/src/config';
 import { wxToast } from '@/utils/wxApi.js';
 
-/**
- * @desc 不同环境接口配置
- */
-let baseUrl = '';
-switch (process.env.ENV) {
-  case 'dev':
-    baseUrl = devUrl;
-    break;
-  case 'test':
-    baseUrl = testUrl;
-    break;
-  case 'prod':
-    baseUrl = uatUrl;
-    break;
-  default:
-    baseUrl = proUrl;
-}
+// 接口地址
+let baseUrl = devUrl;
 
 /**
  * @desc GET 请求
@@ -29,6 +14,11 @@ export function getRequest(url, params) {
     if (Taro.getStorageSync('accessToken')) {
       header = { Authorization: Taro.getStorageSync('accessToken') };
     }
+
+    if (Taro.baseUrl) {
+      baseUrl = Taro.baseUrl;
+    }
+
     Taro.request({
       url: `${baseUrl}${url}`,
       data: {
@@ -71,6 +61,11 @@ export function postRequest(url, params) {
     if (Taro.getStorageSync('accessToken')) {
       header = { Authorization: Taro.getStorageSync('accessToken') };
     }
+
+    if (Taro.baseUrl) {
+      baseUrl = Taro.baseUrl;
+    }
+
     Taro.request({
       url: `${baseUrl}${url}`,
       data: {
@@ -126,6 +121,11 @@ export function postRequestFormData(url, params) {
     if (paramStr !== '') {
       paramStr = paramStr.substr(0, paramStr.length - 1);
     }
+
+    if (Taro.baseUrl) {
+      baseUrl = Taro.baseUrl;
+    }
+
     Taro.request({
       url: `${baseUrl}${url}`,
       data: paramStr,
@@ -175,6 +175,10 @@ export function deleteRequest(url, params) {
         return encodeURIComponent(k) + '=' + encodeURIComponent(params[k]);
       })
       .join('&');
+
+    if (Taro.baseUrl) {
+      baseUrl = Taro.baseUrl;
+    }
 
     Taro.request({
       url: `${baseUrl}${url}?${getParams}`,
