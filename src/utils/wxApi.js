@@ -38,7 +38,7 @@ export const wxPay = (option) => {
  * @desc 微信 保存图片到相册
  * @param { string } filePath 文件路径
  */
-export const wxSaveImageToAlbum = (filePath) => {
+export const wxSaveImageToAlbum = (filePath = '') => {
   Taro.getSetting({
     success(settingRes) {
       // 判断是否有权限
@@ -48,7 +48,9 @@ export const wxSaveImageToAlbum = (filePath) => {
           success() {
             Taro.saveImageToPhotosAlbum({
               filePath,
-              success() {},
+              success() {
+                wxToast('保存成功');
+              },
               fail() {
                 wxToast('保存失败');
               },
@@ -67,7 +69,9 @@ export const wxSaveImageToAlbum = (filePath) => {
       } else {
         Taro.saveImageToPhotosAlbum({
           filePath,
-          success() {},
+          success() {
+            wxToast('保存成功');
+          },
           fail() {
             wxToast('保存失败');
           },
@@ -83,26 +87,16 @@ export const wxSaveImageToAlbum = (filePath) => {
  * @param { string } title 文件标题
  */
 export const wxDownloadFile = (url = '', title = '') => {
+  const mime = url.substring(url.lastIndexOf('.'));
+  let fileName = new Date().valueOf();
+  let filePath = Taro.env.USER_DATA_PATH + '/' + fileName + mime;
+
   Taro.downloadFile({
     url,
-    success(res) {
-      const filePath = res.tempFilePath;
-      const arr = filePath.split('.');
-      const mime = arr[arr.length - 1];
-
-      if (mime === 'jpg' || mime === 'jpeg' || mime === 'png' || mime === 'gif') {
-        Taro.getSystemInfo({
-          success(sysRes) {
-            if (sysRes.platform === 'ios') {
-              Taro.navigateTo({ url: `/web-view/index?url=${url}` });
-            } else {
-              wxSaveImageToAlbum(filePath);
-            }
-          },
-          fail() {
-            wxToast('文件打开失败');
-          },
-        });
+    filePath,
+    success() {
+      if (mime === '.jpg' || mime === '.jpeg' || mime === '.png' || mime === '.gif') {
+        wxSaveImageToAlbum(filePath);
       } else {
         Taro.getSystemInfo({
           success(sysRes) {

@@ -79,13 +79,16 @@ yarn dev || yarn start
 
 目录结构
 
-    ├── dist                   // 微信小程序编译结果目录
-    ├── config                 // Taro配置目录
-    │   ├── dev.js                 // 开发时配置
+    ├── config                 // Taro 配置目录
+    │   ├── dev.js                 // 开发配置
     │   ├── index.js               // 默认配置
-    │   └── prod.js                // 打包时配置
+    │   └── prod.js                // 生产配置
+    │   └── test.js                // 测试配置
+    │   └── uat.js                // 预生产配置
+    ├── dist                   // 微信小程序编译结果目录
     ├── src                    // 源码目录
-    │   ├── components             // 组件
+    │   ├── assets             // 静态文件
+    │   ├── components             // 自定义组件
     │   ├── models                 // 全局 dva model
     │   ├── pages                  // 页面文件目录
     │   │   └── index
@@ -98,9 +101,15 @@ yarn dev || yarn start
     │   │      ├── mixin.scss     // sass 样式变量
     │   ├── utils
     │   │       ├── dva.js           // dva 配置
+    │   │       ├── getSystemInfo.js    // 获取系统信息，自定义导航数据
     │   │       ├── request.js         // ajax
     │   │       ├── util.js           // 常用工具类
-    │   │       ├── wechatPay.js         // 微信支付接口
+    │   │       ├── wxApi.js         // 微信接口
+    │   ├── webview             // webview
     │   ├── app.js             // 入口文件
     │   └── index.html
+    └── .eslintrc                // eslint 配置
+    └── .gitignore                // git 忽略目录、文件
+    └── .prettierrc                // prettier 配置
     └── package.json            // 项目依赖
+    └── package.config.json            // 项目配置

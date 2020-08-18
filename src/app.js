@@ -33,6 +33,12 @@ class App extends Component {
 
   config = {
     pages: ['pages/basicLayout/index', 'pages/subPage/index'],
+    subpackages: [
+      {
+        root: 'webview',
+        pages: ['index'],
+      },
+    ],
     window: {
       navigationStyle: 'custom',
     },
