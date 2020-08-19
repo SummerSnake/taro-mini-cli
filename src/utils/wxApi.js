@@ -87,7 +87,7 @@ export const wxSaveImageToAlbum = (filePath = '') => {
  * @param { string } title 文件标题
  */
 export const wxDownloadFile = (url = '', title = '') => {
-  const mime = url.substring(url.lastIndexOf('.'));
+  const mime = url.substring(url.lastIndexOf('.') + 1);
   let fileName = new Date().valueOf();
   let filePath = Taro.env.USER_DATA_PATH + '/' + fileName + mime;
 
@@ -95,7 +95,7 @@ export const wxDownloadFile = (url = '', title = '') => {
     url,
     filePath,
     success() {
-      if (mime === '.jpg' || mime === '.jpeg' || mime === '.png' || mime === '.gif') {
+      if (mime === 'jpg' || mime === 'jpeg' || mime === 'png' || mime === 'gif') {
         wxSaveImageToAlbum(filePath);
       } else {
         Taro.getSystemInfo({
