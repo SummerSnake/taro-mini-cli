@@ -1,0 +1,42 @@
+var conOffsetTop = 0; // banner 高度
+
+/**
+ * @desc 监听 touchMove 事件，获取 banner 高度
+ * @param { object } e
+ * @param { object } ins 组件实例
+ */
+function handleTouchMove(e, ins) {
+  if (conOffsetTop === 0) {
+    conOffsetTop = e && e.currentTarget && e.currentTarget.offsetTop;
+  }
+}
+
+/**
+ * @desc 监听 scrollView 滚动事件，改变导航条样式
+ * @param { object } e
+ * @param { object } ins 组件实例
+ */
+function handleScroll(e, ins) {
+  var scrollTop = e && e.detail && e.detail.scrollTop;
+
+  // 下划至内容区域，改变导航栏字体颜色及背景色
+  if (conOffsetTop > 0 && scrollTop >= conOffsetTop) {
+    ins.selectComponent('.navBarWrap').setStyle({
+      color: '#333',
+      'background-color': '#fff',
+    });
+  }
+
+  // 导航栏在 banner 区域划动，背景色渐变
+  if (scrollTop <= conOffsetTop) {
+    ins.selectComponent('.navBarWrap').setStyle({
+      color: 'transparent',
+      'background-color': 'rgba(255, 255, 255, ' + Math.max(0, (scrollTop) / conOffsetTop) + ')',
+    });
+  }
+};
+
+module.exports = {
+  handleTouchMove: handleTouchMove,
+  handleScroll: handleScroll,
+}

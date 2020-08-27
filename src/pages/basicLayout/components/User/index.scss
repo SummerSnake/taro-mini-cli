@@ -1,0 +1,134 @@
+@import '@/src/styles/mixin';
+
+.userWrap {
+  @include wh(100vw, 100%);
+  background-color: #f9f9f9;
+  .scrollDom {
+    @include wh(100vw, 100%);
+    // 内容
+    .conWrap {
+      .userBanner {
+        @include wh(100%, 560px);
+        position: relative;
+        background: #fff url(../../../../assets/images/user_banner.png) no-repeat;
+        background-position: 0 0;
+        background-size: 750px 476px;
+        .avatarWrap {
+          padding: 100px 200px 60px 30px;
+          .avatarImgWrap {
+            @include wh(64px, 64px);
+            display: inline-block;
+            margin-right: 20px;
+            border-radius: 50%;
+            background-color: #fff;
+            vertical-align: middle;
+            overflow: hidden;
+            .avatarImgDom {
+              @include wh(100%, 100%);
+            }
+          }
+          .avatarTxt {
+            @include sc(30px, #fff);
+            vertical-align: middle;
+          }
+        }
+        .userCard {
+          @include wh(690px, 348px);
+          position: absolute;
+          bottom: 0;
+          left: 30px;
+          box-sizing: border-box;
+          padding: 30px 44px;
+          color: #fff;
+          background-image: linear-gradient(180deg, #128ef9 0%, #41e3dc 100%);
+          box-shadow: 0 4px 20px 0 rgba(145, 145, 145, 0.5);
+          border-radius: 8px;
+          .userTitleWrap {
+            height: 32px;
+            .userCardTitle {
+              float: left;
+              margin-right: 12px;
+              font-size: 20px;
+            }
+            .eyeImgWrap {
+              float: left;
+              .eyeImg {
+                @include wh(32px, 32px);
+              }
+            }
+          }
+          .userCardEye {
+            margin-bottom: 80px;
+            font-size: 64px;
+          }
+          .userCardList {
+            display: flex;
+            align-items: center;
+            .cardListItem {
+              position: relative;
+              flex: 1;
+              text-align: center;
+              &::before {
+                @include wh(2px, 40px);
+                position: absolute;
+                top: 18px;
+                left: 0;
+                display: inline-block;
+                background-color: #fff;
+                content: ' ';
+              }
+              .itemTitle {
+                margin-bottom: 12px;
+                font-size: 20px;
+              }
+              .itemNum {
+                font-size: 30px;
+                font-weight: 600;
+              }
+            }
+            .cardListItem:first-child {
+              &::before {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+      .userLinkList {
+        margin-top: 20px;
+        .linkListItemWrap {
+          width: 100%;
+          background-color: #fff;
+          .linkListItemDom {
+            @include wh(690px, 110px);
+            position: relative;
+            box-sizing: border-box;
+            margin: 0 auto;
+            padding-left: 10px;
+            line-height: 110px;
+            background-color: #fff;
+            border-bottom: 2px solid #ebebeb;
+            .itemIcon {
+              @include wh(36px, 36px);
+              vertical-align: middle;
+            }
+            .itemIcon:last-child {
+              position: absolute;
+              top: 50%;
+              right: 0;
+              transform: translateY(-50%);
+            }
+            .itemTitle {
+              @include sc(30px, #404040);
+              margin-left: 20px;
+              vertical-align: middle;
+            }
+          }
+          &:last-child {
+            margin-top: 20px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -4,28 +4,26 @@
   @include wh(100vw, 100%);
   position: relative;
   .contentWrap {
-    @include wh(100%, calc(100% - 100px));
     position: absolute;
     top: 0;
     left: 0;
     overflow: auto;
   }
   .tabbarWrap {
-    @include wh(100%, 100px);
     position: absolute;
     bottom: 0;
     left: 0;
     display: flex;
+    width: 100%;
     box-sizing: border-box;
-    padding-top: 8px;
-    border-top: 2px solid #e5e5e5;
+    background-color: #fff;
+    box-shadow: 0 -1px 8px 0 rgba(234, 234, 234, 0.5);
     overflow: hidden;
     .tabbarItem {
       flex: 1;
       text-align: center;
       .tabbarIcon {
-        width: 48px;
-        height: 48px;
+        @include wh(48px, 48px);
       }
       .tabbarTitle {
         margin-top: -8px;

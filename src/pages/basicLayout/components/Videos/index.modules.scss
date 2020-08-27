@@ -1,0 +1,38 @@
+@import '@/src/styles/mixin';
+page {
+  height: 100% !important;
+  background-color: #fff !important;
+}
+.videosWrap {
+  @include wh(100vw, 100%);
+  .scrollDom {
+    overflow: hidden;
+    .videosListWrap {
+      padding: 30px;
+      .listItemWrap {
+        .itemVideoWrap {
+          @include wh(690px, 378px);
+          .videoDom,
+          .imgDom {
+            @include wh(100%, 100%);
+          }
+        }
+        .itemTitle {
+          @include sc($txtSize, $titleColor);
+          padding: 28px 0;
+          word-break: break-all;
+        }
+        .itemDate {
+          @include sc(24px, $txtColor);
+          padding-bottom: 30px;
+        }
+      }
+    }
+  }
+  .noCon {
+    text-align: center;
+    font-size: 24px;
+    padding: 12px;
+    color: #e6e6e6;
+  }
+}

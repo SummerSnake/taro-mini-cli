@@ -1,0 +1,68 @@
+@import '@/src/styles/mixin';
+
+.homeWrap {
+  @include wh(100vw, 100%);
+  // 导航
+  .navBarWrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 997;
+    width: 100%;
+    color: transparent;
+    .navBarTitle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      /* prettier-ignore */
+      margin-top: -2PX;
+      /* prettier-ignore */
+      padding-top: 20PX;
+      z-index: 998;
+      /* prettier-ignore */
+      font-size: 17PX;
+      text-align: center;
+    }
+  }
+  .scrollDom {
+    @include wh(100vw, 100%);
+    // banner
+    .bannerWrap {
+      @include wh(100%, 458px);
+      overflow: hidden;
+      .swiperItemDom {
+        @include wh(100%, 100%);
+        .swiperImg {
+          @include wh(100%, 100%);
+        }
+      }
+    }
+    // 内容
+    .conWrap {
+      // 公告
+      .noticeWrap {
+        @include wh(690px, 100px);
+        box-sizing: border-box;
+        margin: 30px auto;
+        padding: 20px 30px;
+        line-height: 60px;
+        background-color: #f6f8fd;
+        overflow: hidden;
+        .noticeTitle {
+          @include sc($txtColor, $titleColor);
+          float: left;
+          margin-right: 20px;
+        }
+        .noticeSwiperWrap {
+          @include wh(540px, 60px);
+          @include sc(24px, $titleColor);
+          overflow: hidden;
+          .swiperItemDom {
+            @include ellipsis;
+          }
+        }
+      }
+    }
+  }
+}

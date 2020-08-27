@@ -21,7 +21,11 @@ const config = {
   },
   copy: {
     patterns: [
-      { from: 'src/pages/user/move.wxs', to: 'dist/pages/user/move.wxs' }, // 指定需要 copy 的文件
+      // 指定需要 copy 的文件
+      {
+        from: 'src/pages/basicLayout/components/Home/move.wxs',
+        to: 'dist/pages/basicLayout/components/Home/move.wxs',
+      },
     ],
   },
   babel: {
