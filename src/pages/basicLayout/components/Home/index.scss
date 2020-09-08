@@ -63,6 +63,77 @@
           }
         }
       }
+      // 列表
+      .listWrap {
+        padding: 24px;
+        background-color: #f6f6f6;
+        .cardDom {
+          @include wh(100%, 300px);
+          box-sizing: border-box;
+          padding: 20px 0 20px 20px;
+          margin-bottom: 24px;
+          background: #fff url('../../../../assets/images/card_bg.png') no-repeat;
+          -webkit-background-size: cover;
+          background-size: cover;
+          border-radius: 15px;
+          overflow: hidden;
+          &::after {
+            @include clearfix;
+          }
+          .cardLeft {
+            @include wh(120px, 120px);
+            float: left;
+            margin: 6px 20px 0 0;
+            .cardLogo {
+              @include wh(100%, 100%);
+            }
+          }
+          .cardRight {
+            position: relative;
+            float: left;
+            width: 520px;
+            .cardTitle {
+              @include sc(30px, #2d1e1e);
+              margin-bottom: 24px;
+              > text {
+                vertical-align: middle;
+              }
+              .circleSign {
+                @include wh(30px, 30px);
+                @include sc(24px, #fff);
+                display: inline-block;
+                margin-left: 12px;
+                text-align: center;
+                line-height: 30px;
+                border-radius: 50%;
+              }
+            }
+            .cardTxt {
+              @include sc(26px, #b0b3bf);
+              max-width: 500px;
+              margin-bottom: 20px;
+              > text {
+                margin-left: 30px;
+              }
+            }
+            .cardDate {
+              @include sc(24px, #b0b3bf);
+              > text {
+                margin-left: 20px;
+              }
+            }
+            .moneyDom {
+              @include sc(36px, #fe5801);
+              position: absolute;
+              top: 24px;
+              right: 28px;
+            }
+          }
+        }
+        .taskCard:last-child {
+          margin-bottom: 0;
+        }
+      }
     }
   }
 }
