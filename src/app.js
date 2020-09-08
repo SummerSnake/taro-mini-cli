@@ -32,7 +32,7 @@ class App extends Component {
   };
 
   config = {
-    pages: ['pages/basicLayout/index', 'pages/subPage/index'],
+    pages: ['pages/basicLayout/index'],
     subpackages: [
       {
         root: 'webview',
