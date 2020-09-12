@@ -8,7 +8,7 @@ import styles from './index.modules.scss';
 class Videos extends Component {
   // 导航栏参数
   navBarJson = {
-    background: 'linear-gradient(33deg, #d279ee, #f8c390)', // 导航栏背景，可设为颜色或图片
+    background: 'linear-gradient(33deg, #77a1d3, #79cbca, #e684ae)', // 导航栏背景，可设为颜色或图片
     color: '#fff', // 导航栏标题颜色
     title: '视频', // 导航栏标题
   };

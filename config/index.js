@@ -8,9 +8,9 @@ const config = {
   date: '2020-04-17',
   designWidth: 750,
   deviceRatio: {
-    '640': 2.34 / 2,
-    '750': 1,
-    '828': 1.81 / 2,
+    640: 2.34 / 2,
+    750: 1,
+    828: 1.81 / 2,
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
@@ -28,6 +28,7 @@ const config = {
       },
     ],
   },
+  plugins: ['@tarojs/plugin-sass'],
   babel: {
     sourceMap: true,
     presets: [
