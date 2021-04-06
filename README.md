@@ -6,7 +6,7 @@ taro 小程序脚手架
 
 # 技术栈
 
-Taro + dva + scss
+Taro 3.x + dva + scss
 
 Taro 是一套遵循 React 语法规范的 多端开发 解决方案。
 
@@ -32,7 +32,15 @@ yarn dev || yarn start
 
 # 注意事项
 
-##### 1. dva model 需要在全局 models 中引入，否则无法使用：
+##### 1. taro 3.x 需要 node 14.x 支持，推荐使用 nvm 管理 node 版本：
+
+```
+   nvm list;
+
+   nvm use 14.x;
+```
+
+##### 2. dva model 需要在全局 models 中引入，否则无法使用：
 
 ```
    import home from '../pages/home/model';
@@ -40,7 +48,7 @@ yarn dev || yarn start
    export default [home];
 ```
 
-##### 2. iconfont 使用方法：注册 阿里 iconfont 账号，找管理员加入项目。
+##### 3. iconfont 使用方法：注册 阿里 iconfont 账号，找管理员加入项目。
 
 仅可在路由注册的页面中使用，引入的子组件无法使用。页面中引入方式：
 
@@ -48,20 +56,20 @@ yarn dev || yarn start
    <View className='iconX'>&#xe645;</View>
 ```
 
-##### 3. 推荐使用 prettier 格式化代码，已配置全局命令：
+##### 4. 推荐使用 prettier 格式化代码，已配置全局命令：
 
 ```
    yarn prettier || npm run prettier
 ```
 
-##### 4. 推荐使用 css modules，scss 文件命名为 index.modules.scss:
+##### 5. 推荐使用 css modules，scss 文件命名为 index.modules.scss:
 
 ```
    import styles from './index.modules.scss';
    <View className={styles.homeWrap}>
 ```
 
-##### 5. 推荐使用 sass 变量，全局变量文件路径 ‘\*\*/styles/mixin.scss’：
+##### 6. 推荐使用 sass 变量，全局变量文件路径 ‘\*\*/styles/mixin.scss’：
 
 引入方式： scss 文件中 import
 
@@ -69,7 +77,7 @@ yarn dev || yarn start
    @import '@/src/styles/mixin';
 ```
 
-##### 6. 可以使用命令自动生成页面模板，用处不大，仅做娱乐使用:
+##### 7. 可以使用命令自动生成页面模板，用处不大，仅做娱乐使用:
 
 ```
    yarn template 'fileName'

@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro';
 import { View, Image } from '@tarojs/components';
-import { connect } from '@tarojs/redux';
+import { connect } from 'react-redux';
 import { verifyArr } from '@/utils/util';
 
 import tabbar_icon01 from '@/src/assets/tabbars/tabbar_icon01.png';
