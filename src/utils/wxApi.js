@@ -101,7 +101,7 @@ export const wxDownloadFile = (url = '', title = '') => {
         Taro.getSystemInfo({
           success(sysRes) {
             if (sysRes.platform === 'ios') {
-              Taro.navigateTo({ url: `/webview/index?url=${url}` });
+              Taro.navigateTo({ url: `/pages/webViewX/index?url=${url}` });
             } else {
               const fs = Taro.getFileSystemManager();
               // 修改文件名字，仅安卓可以，ios无权限
@@ -128,4 +128,58 @@ export const wxDownloadFile = (url = '', title = '') => {
       }
     },
   });
+};
+
+/**
+ * @desc 校验版本更新
+ */
+export const wxCheckForUpdate = () => {
+  if (Taro.canIUse('getUpdateManager')) {
+    // 判断当前微信版本是否支持版本更新
+    const updateManager = Taro.getUpdateManager();
+
+    updateManager.onCheckForUpdate((res) => {
+      if (res.hasUpdate) {
+        // 请求完新版本信息的回调
+        updateManager.onUpdateReady(() => {
+          Taro.showModal({
+            title: '更新提示',
+            content: '新版本已经准备好，是否重启小程序？',
+            success(res) {
+              if (res.confirm) {
+                // 新版本已经下载好，调用 applyUpdate 应用新版本并重启
+                updateManager.applyUpdate();
+              }
+            },
+          });
+        });
+
+        updateManager.onUpdateFailed(() => {
+          Taro.showModal({
+            // 新版本下载失败
+            title: '亲，已经有新版本了~',
+            content: '新版本已经上线啦~，请您删除当前小程序，重新搜索打开~',
+          });
+        });
+      }
+    });
+  } else {
+    // 如果希望用户在最新版本的客户端上体验小程序
+    Taro.showModal({
+      title: '提示',
+      content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。',
+    });
+  }
+};
+
+/**
+ * @desc 校验是否是 iphoneX 及以上机型
+ */
+export const wxCheckIsIphoneX = () => {
+  const res = Taro.getSystemInfoSync();
+
+  const { model = '' } = res;
+  if (model.indexOf('iPhone X') > -1) {
+    Taro.setStorageSync('isIPhoneX', '1');
+  }
 };

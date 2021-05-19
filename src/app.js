@@ -1,44 +1,33 @@
 import Taro, { Component } from '@tarojs/taro';
 import { Provider } from '@tarojs/redux';
 import _store from '@/utils/dva';
-import { devUrl, testUrl, uatUrl, proUrl } from '@/src/config';
+import { apiUrlJson } from '@/src/config';
+import { wxCheckForUpdate, wxCheckIsIphoneX } from '@/utils/wxApi';
 import BasicLayout from './pages/basicLayout';
 import './styles/iconfont.scss';
 
 class App extends Component {
   componentWillMount = () => {
-    /**
-     * @desc 不同环境接口配置
-     */
-    let baseUrl = '';
-    switch (process.env.ENV) {
-      case 'dev':
-        baseUrl = devUrl;
-        break;
-      case 'test':
-        baseUrl = testUrl;
-        break;
-      case 'uat':
-        baseUrl = uatUrl;
-        break;
-      case 'prod':
-        baseUrl = proUrl;
-        break;
-      default:
-        baseUrl = proUrl;
-    }
+    // 不同环境接口配置
+    Taro.baseUrl = apiUrlJson[process.env.ENV];
+  };
 
-    Taro.baseUrl = baseUrl;
+  componentDidMount = () => {
+    // 校验版本更新
+    wxCheckForUpdate();
+
+    // 校验是否是 iphoneX 及以上机型
+    wxCheckIsIphoneX();
   };
 
   config = {
-    pages: ['pages/basicLayout/index'],
-    subpackages: [
-      {
-        root: 'webview',
-        pages: ['index'],
-      },
-    ],
+    pages: ['pages/basicLayout/index', 'pages/webViewX/index'],
+    // subpackages: [
+    //   {
+    //     root: 'webview',
+    //     pages: ['index'],
+    //   },
+    // ],
     window: {
       navigationStyle: 'custom',
     },
