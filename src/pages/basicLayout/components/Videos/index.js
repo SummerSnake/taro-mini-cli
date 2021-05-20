@@ -1,4 +1,5 @@
-import Taro, { Component } from '@tarojs/taro';
+import Taro from '@tarojs/taro';
+import React, { Component } from 'react';
 import { View, Video, Image, ScrollView } from '@tarojs/components';
 import { verifyArr } from '@/utils/util';
 import getSystemInfo from '@/utils/getSystemInfo';

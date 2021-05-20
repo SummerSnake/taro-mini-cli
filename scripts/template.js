@@ -15,7 +15,7 @@ if (!dirName) {
 // 页面模版
 const indexTep = `import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
-import { connect } from '@tarojs/redux';
+import { connect } from 'react-redux';
 import styles from './index.modules.scss';
 
 @connect(({${dirName}}) => ({

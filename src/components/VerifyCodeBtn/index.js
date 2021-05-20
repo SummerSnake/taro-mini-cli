@@ -1,5 +1,6 @@
-import Taro, { useState, useEffect } from '@tarojs/taro';
-import { connect } from '@tarojs/redux';
+import Taro from '@tarojs/taro';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { View } from '@tarojs/components';
 import { isNotNull } from '@/utils/util';
 import styles from './index.modules.scss';

@@ -1,4 +1,5 @@
-import Taro, { useState } from '@tarojs/taro';
+import Taro from '@tarojs/taro';
+import React, { useState } from 'react';
 import { View, Text, Image, ScrollView } from '@tarojs/components';
 
 import eyeOpen from '@/src/assets/images/eye_open.png';

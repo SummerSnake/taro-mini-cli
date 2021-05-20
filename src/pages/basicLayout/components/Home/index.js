@@ -1,4 +1,4 @@
-import Taro, { useState, useEffect } from '@tarojs/taro';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Image, Swiper, SwiperItem, ScrollView } from '@tarojs/components';
 import getSystemInfo from '@/utils/getSystemInfo';
 import { isObj, verifyArr, formatNumberToRMB } from '@/utils/util';
@@ -46,7 +46,7 @@ function Home() {
         </View>
       </View>
 
-      <wxs module="move" src="./move.wxs"></wxs>
+      <wxs module="move" src="./components/Home/move.wxs"></wxs>
 
       <ScrollView
         scroll-y="true"

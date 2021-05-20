@@ -2,7 +2,7 @@ import Taro from '@tarojs/taro';
 import { View, Button } from '@tarojs/components';
 import { AtModal, AtModalHeader, AtModalContent, AtModalAction } from 'taro-ui';
 import { postRequest } from '@/utils/api';
-import { connect } from '@tarojs/redux';
+import { connect } from 'react-redux';
 
 function Authorize(props) {
   const { dispatch, isModalShow = false, callback = () => {} } = props;

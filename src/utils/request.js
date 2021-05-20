@@ -1,9 +1,8 @@
 import Taro from '@tarojs/taro';
-import { devUrl } from '@/src/config';
 import { wxToast } from '@/utils/wxApi.js';
 
 // 接口地址
-let baseUrl = devUrl;
+let baseUrl = '';
 
 /**
  * @desc GET 请求
@@ -41,7 +40,7 @@ export function getRequest(url, params) {
           case 401:
             wxToast(header.Authorization ? '登录失效，请重新登录' : '请先登录');
             setTimeout(() => {
-              Taro.reLaunch({ url: '/pages/login/index' });
+              Taro.reLaunch({ url: '/pages/basicLayout/index' });
             }, 2000);
             break;
           default:
@@ -92,7 +91,7 @@ export function postRequest(url, params) {
           case 401:
             wxToast(header.Authorization ? '登录失效，请重新登录' : '请先登录');
             setTimeout(() => {
-              Taro.reLaunch({ url: '/pages/login/index' });
+              Taro.reLaunch({ url: '/pages/basicLayout/index' });
             }, 2000);
             break;
           default:
@@ -149,7 +148,7 @@ export function postRequestFormData(url, params) {
           case 401:
             wxToast(header.Authorization ? '登录失效，请重新登录' : '请先登录');
             setTimeout(() => {
-              Taro.reLaunch({ url: '/pages/login/index' });
+              Taro.reLaunch({ url: '/pages/basicLayout/index' });
             }, 2000);
             break;
           default:
@@ -202,7 +201,7 @@ export function deleteRequest(url, params) {
           case 401:
             wxToast(header.Authorization ? '登录失效，请重新登录' : '请先登录');
             setTimeout(() => {
-              Taro.reLaunch({ url: '/pages/login/index' });
+              Taro.reLaunch({ url: '/pages/basicLayout/index' });
             }, 2000);
             break;
           default:

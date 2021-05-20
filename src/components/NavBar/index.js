@@ -1,4 +1,4 @@
-import Taro, { useState, useEffect } from '@tarojs/taro';
+import React, { useState, useEffect } from 'react';
 import { View } from '@tarojs/components';
 import getSystemInfo from '@/utils/getSystemInfo';
 import styles from './index.modules.scss';
