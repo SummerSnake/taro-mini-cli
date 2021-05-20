@@ -1,62 +1,62 @@
 {
-  "name": "taro-mini-cli",
-  "version": "1.0.0",
-  "private": true,
-  "description": "taro 小程序脚手架",
-  "templateInfo": {
-    "name": "default",
-    "typescript": false,
-    "css": "sass"
-  },
-  "scripts": {
-    "dev": "cross-env ENV=dev taro build --type weapp --watch",
-    "start": "cross-env ENV=dev taro build --type weapp --watch",
-    "compress": "cross-env ENV=dev NODE_ENV=production taro build --type weapp --watch",
-    "test": "cross-env ENV=test taro build --type weapp",
-    "uat": "cross-env ENV=uat taro build --type weapp",
-    "build": "cross-env ENV=prod taro build --type weapp",
-    "template": "node scripts/template",
-    "prettier": "node scripts/prettier.js"
-  },
-  "browserslist": [
-    "last 3 versions",
-    "Android >= 4.1",
-    "ios >= 8"
-  ],
-  "author": "SummerSnake",
-  "license": "MIT",
-  "dependencies": {
-    "@babel/runtime": "^7.13.10",
-    "@tarojs/cli": "3.1.2",
-    "@tarojs/components": "3.1.2",
-    "@tarojs/react": "3.1.2",
-    "@tarojs/runtime": "3.1.2",
-    "@tarojs/taro": "3.1.2",
-    "dva-core": "^2.0.2",
-    "dva-loading": "^3.0.20",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-redux": "^7.2.3",
-    "redux": "^4.0.5",
-    "taro-ui": "^3.0.0-alpha.10"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.13.10",
-    "@tarojs/mini-runner": "3.1.2",
-    "@tarojs/webpack-runner": "3.1.2",
-    "@types/react": "^17.0.3",
-    "@types/webpack-env": "^1.16.0",
-    "babel-preset-taro": "3.1.2",
-    "cross-env": "^7.0.2",
-    "eslint": "^7.23.0",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-config-taro": "3.1.2",
-    "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.23.1",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "node-sass": "^4.14.1",
-    "prettier": "^2.2.1",
-    "sass": "^1.32.8"
-  }
+	"name": "taro-mini-cli",
+	"version": "1.0.0",
+	"private": true,
+	"description": "taro 小程序脚手架",
+	"templateInfo": {
+		"name": "default",
+		"typescript": false,
+		"css": "sass"
+	},
+	"scripts": {
+		"dev": "cross-env ENV=dev taro build --type weapp --watch",
+		"start": "cross-env ENV=dev taro build --type weapp --watch",
+		"compress": "cross-env ENV=dev NODE_ENV=production taro build --type weapp --watch",
+		"test": "cross-env ENV=test taro build --type weapp",
+		"uat": "cross-env ENV=uat taro build --type weapp",
+		"build": "cross-env ENV=prod taro build --type weapp",
+		"template": "node scripts/template",
+		"prettier": "node scripts/prettier.js"
+	},
+	"browserslist": [
+		"last 3 versions",
+		"Android >= 4.1",
+		"ios >= 8"
+	],
+	"author": "SummerSnake",
+	"license": "MIT",
+	"dependencies": {
+		"@babel/runtime": "^7.14.0",
+		"@tarojs/components": "3.2.8",
+		"@tarojs/react": "3.2.8",
+		"@tarojs/runtime": "3.2.8",
+		"@tarojs/taro": "3.2.8",
+		"dva-core": "^2.0.2",
+		"dva-loading": "^3.0.20",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"react-redux": "^7.2.4",
+		"redux": "^4.1.0",
+		"taro-ui": "^3.0.0-alpha.10"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.14.3",
+		"@tarojs/cli": "3.2.8",
+		"@tarojs/mini-runner": "3.2.8",
+		"@tarojs/webpack-runner": "3.2.8",
+		"@types/react": "^17.0.6",
+		"@types/webpack-env": "^1.16.0",
+		"babel-preset-taro": "3.2.8",
+		"cross-env": "^7.0.2",
+		"eslint": "^7.26.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-config-taro": "3.2.8",
+		"eslint-plugin-import": "^2.23.2",
+		"eslint-plugin-prettier": "^3.4.0",
+		"eslint-plugin-react": "^7.23.2",
+		"eslint-plugin-react-hooks": "^4.2.0",
+		"node-sass": "^4.14.1",
+		"prettier": "^2.3.0",
+		"sass": "^1.32.13"
+	}
 }
