@@ -1,7 +1,10 @@
+import { getCurrentInstance } from '@tarojs/taro';
 import { View, WebView } from '@tarojs/components';
 
 function WebviewX() {
-  const { params = {} } = this.$router && this.$router;
+  const {
+    router: { params = {} },
+  } = getCurrentInstance() && getCurrentInstance();
 
   return (
     <View>
