@@ -1,11 +1,11 @@
 import Taro from '@tarojs/taro';
 import React, { Component } from 'react';
+import 'taro-ui/dist/style/index.scss';
 import { Provider } from 'react-redux';
 import _store from '@/utils/dva';
 import { apiUrlJson } from '@/src/config';
 import { wxCheckForUpdate, wxCheckIsIphoneX } from '@/utils/wxApi';
 import './styles/iconfont.scss';
-import 'taro-ui/dist/style/index.scss';
 
 class App extends Component {
   constructor(props) {
