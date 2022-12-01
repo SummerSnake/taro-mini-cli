@@ -6,7 +6,7 @@ taro 小程序脚手架
 
 # 技术栈
 
-Taro 3.x + dva + scss
+Taro 3.x + scss
 
 Taro 是一套遵循 React 语法规范的 多端开发 解决方案。
 
@@ -19,14 +19,12 @@ Taro 的语法规则基于 React 规范，它采用与 React 一致的组件化�
 # 项目运行
 
 ```
-# 全局安装taro脚手架
-yarn global add @tarojs/cli
 
 # 安装项目依赖
-yarn -i
+npm ci
 
 # 启动项目
-yarn dev || yarn start
+npm run dev || npm run start
 
 ```
 
@@ -40,15 +38,7 @@ yarn dev || yarn start
    nvm use 14.x;
 ```
 
-##### 2. dva model 需要在全局 models 中引入，否则无法使用：
-
-```
-   import home from '../pages/home/model';
-
-   export default [home];
-```
-
-##### 3. iconfont 使用方法：注册 阿里 iconfont 账号，找管理员加入项目。
+##### 2. iconfont 使用方法：注册 阿里 iconfont 账号，找管理员加入项目。
 
 仅可在路由注册的页面中使用，引入的子组件无法使用。页面中引入方式：
 
@@ -56,20 +46,20 @@ yarn dev || yarn start
    <View className='iconX'>&#xe645;</View>
 ```
 
-##### 4. 推荐使用 prettier 格式化代码，已配置全局命令：
+##### 3. 推荐使用 prettier 格式化代码，已配置全局命令：
 
 ```
-   yarn prettier || npm run prettier
+   npm run prettier
 ```
 
-##### 5. 推荐使用 css modules，scss 文件命名为 index.modules.scss:
+##### 4. 推荐使用 css modules，scss 文件命名为 index.modules.scss:
 
 ```
    import styles from './index.modules.scss';
    <View className={styles.homeWrap}>
 ```
 
-##### 6. 推荐使用 sass 变量，全局变量文件路径 ‘\*\*/styles/mixin.scss’：
+##### 5. 推荐使用 sass 变量，全局变量文件路径 ‘\*\*/styles/mixin.scss’：
 
 引入方式： scss 文件中 import
 
@@ -80,7 +70,7 @@ yarn dev || yarn start
 ##### 7. 可以使用命令自动生成页面模板，用处不大，仅做娱乐使用:
 
 ```
-   yarn template 'fileName'
+   npm run template 'fileName'
 ```
 
 # 业务介绍
@@ -97,7 +87,7 @@ yarn dev || yarn start
     ├── src                    // 源码目录
     │   ├── assets             // 静态文件
     │   ├── components             // 自定义组件
-    │   ├── models                 // 全局 dva model
+    │   ├── store                 // 全局状态
     │   ├── pages                  // 页面文件目录
     │   │   └── index
     │   │       ├── index.js           // 页面逻辑
@@ -108,7 +98,6 @@ yarn dev || yarn start
     │   │      ├── iconfont.scss       // 阿里 iconfont 图标
     │   │      ├── mixin.scss     // sass 样式变量
     │   ├── utils
-    │   │       ├── dva.js           // dva 配置
     │   │       ├── getSystemInfo.js    // 获取系统信息，自定义导航数据
     │   │       ├── request.js         // ajax
     │   │       ├── util.js           // 常用工具类

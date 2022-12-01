@@ -1,40 +1,29 @@
 import Taro from '@tarojs/taro';
-import React, { Component } from 'react';
-import 'taro-ui/dist/style/index.scss';
-import { Provider } from 'react-redux';
-import _store from '@/utils/dva';
+import React, { useReducer, useEffect } from 'react';
+import { state as initState, reducer, GlobalContext } from './store';
 import { apiUrlJson } from '@/src/config';
 import { wxCheckForUpdate, wxCheckIsIphoneX } from '@/utils/wxApi';
+
+import 'taro-ui/dist/style/index.scss';
 import './styles/iconfont.scss';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  componentWillMount = () => {
-    // 不同环境接口配置
-    Taro.baseUrl = apiUrlJson[process.env.ENV];
-  };
+function App(props) {
+  const [state, dispatch] = useReducer(reducer, initState);
 
-  componentDidMount = () => {
+  // 不同环境接口配置
+  Taro.baseUrl = apiUrlJson[process.env.ENV];
+
+  useEffect(() => {
     // 校验版本更新
     wxCheckForUpdate();
 
     // 校验是否是 iphoneX 及以上机型
     wxCheckIsIphoneX();
-  };
+  }, []);
 
-  componentDidShow() {}
-
-  componentDidHide() {}
-
-  componentDidCatchError() {}
-
-  // this.props.children 是将要会渲染的页面
-  render() {
-    return <Provider store={_store}>{this.props.children}</Provider>;
-  }
+  return (
+    <GlobalContext.Provider value={{ state, dispatch }}>{props?.children}</GlobalContext.Provider>
+  );
 }
 
 export default App;

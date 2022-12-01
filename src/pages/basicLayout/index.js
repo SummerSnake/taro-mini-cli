@@ -1,6 +1,7 @@
+import React, { useContext } from 'react';
 import Taro from '@tarojs/taro';
 import { View, Image } from '@tarojs/components';
-import { connect } from 'react-redux';
+import { GlobalContext } from '@/src/store';
 import { verifyArr } from '@/utils/util';
 
 import tabbar_icon01 from '@/src/assets/tabbars/tabbar_icon01.png';
@@ -17,7 +18,9 @@ import User from './components/User';
 import styles from './index.modules.scss';
 
 function BasicLayout(props) {
-  const { dispatch, tabbarIndex = 0 } = props;
+  const ctx = useContext(GlobalContext);
+  const { state = {}, dispatch = () => {} } = ctx;
+
   const isIPhoneX = Taro.getStorageSync('isIPhoneX') === 'true';
   const tabbarList = [
     { id: 1, icon: tabbar_icon01, selectIcon: tabbar_icon01_active, title: '首页' },
@@ -28,13 +31,12 @@ function BasicLayout(props) {
   /**
    * @desc tabbar 点击事件
    * @param { number } index
+   * @return { void }
    */
   const handleTabbarClick = (index) => {
     dispatch({
-      type: 'common/save',
-      payload: {
-        tabbarIndex: index,
-      },
+      type: 'ModifyTabbarIndex',
+      payload: index,
     });
   };
 
@@ -51,7 +53,7 @@ function BasicLayout(props) {
             0: <Home />,
             1: <Videos />,
             2: <User />,
-          }[tabbarIndex]
+          }[state?.tabbarIndex]
         }
       </View>
 
@@ -71,11 +73,11 @@ function BasicLayout(props) {
             >
               <Image
                 className={styles.tabbarIcon}
-                src={tabbarIndex === index ? item.selectIcon : item.icon}
+                src={state?.tabbarIndex === index ? item.selectIcon : item.icon}
               />
               <View
                 className={styles.tabbarTitle}
-                style={{ color: tabbarIndex === index ? '#1377ff' : '#333' }}
+                style={{ color: state?.tabbarIndex === index ? '#1377ff' : '#333' }}
               >
                 {item.title}
               </View>
@@ -86,4 +88,4 @@ function BasicLayout(props) {
   );
 }
 
-export default connect(({ common }) => ({ ...common }))(BasicLayout);
+export default BasicLayout;
