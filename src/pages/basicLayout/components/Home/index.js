@@ -46,7 +46,7 @@ function Home() {
         </View>
       </View>
 
-      <wxs module="move" src="./components/Home/move.wxs"></wxs>
+      {/* <wxs module="move" src="./components/Home/move.wxs"></wxs> */}
 
       <ScrollView
         scroll-y="true"
